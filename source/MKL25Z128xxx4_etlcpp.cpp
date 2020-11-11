@@ -67,7 +67,16 @@ int main(void) {
 	/* Init FSL debug console. */
 	BOARD_InitDebugConsole();
 #endif
+	/* Inicializacia UART0 (LPSCI)*/
+	CLOCK_SetLpsci0Clock(0x1U); // Zapnutie hodin tu alebo cez GUI clock wizzard
 
+	lpsci_config_t user_config;
+	LPSCI_GetDefaultConfig(&user_config);
+	user_config.baudRate_Bps = 19200U;
+	LPSCI_Init(UART0, &user_config, CLOCK_GetPllFllSelClkFreq());
+	LPSCI_EnableRx(UART0, true);
+	LPSCI_EnableInterrupts(UART0, kLPSCI_RxDataRegFullInterruptEnable);
+	EnableIRQ(UART0_IRQn);
 
 	PRINTF("Etlcpp FSM\n");
 	gateControl.start(false);
