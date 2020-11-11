@@ -64,36 +64,47 @@ public:
 	}
 //***********************************
 	void OnEnterIdle() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //***********************************
 	void OnExitIdle() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //**********************************
 	void OnEnterOpen() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //**********************************
 	void OnExitOpen() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //***********************************
 	void OnEnterClose() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //***********************************
 	void OnExitClose() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 	}
 //***********************************
 	bool Guard() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 		return guard;
+	}
+	//***********************************
+	bool GuardNotS1AndNotS2() {
+		PRINTF("%s\n", __func__);
+
+		return !S1&&!S2;
+	}
+	//***********************************
+	bool GuardS1OrS2() {
+		PRINTF("%s\n", __func__);
+		return S1 || S2 ;
 	}
 //***********************************
 	bool NotGuard() {
-		PRINTF("%s\n",__func__);
+		PRINTF("%s\n", __func__);
 		return !guard;
 	}
 //***********************************
@@ -101,6 +112,8 @@ public:
 //		std::cout << "Action: Null\n";
 	}
 	bool guard;
+	bool S1 = false;
+	bool S2 = false;
 	static const etl::array<GateControl::transition, 6> transitionTable;
 	static const etl::array<GateControl::state, 3> stateTable;
 };

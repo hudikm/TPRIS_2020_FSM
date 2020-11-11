@@ -37,12 +37,12 @@ const etl::array<GateControl::transition, 6> GateControl::transitionTable = {
 				Events::INIT, // Event
 				States::CLOSE,  // New state
 				&GateControl::OnTranToClose,
-				&GateControl::Guard),
+				&GateControl::GuardNotS1AndNotS2),
 		GateControl::transition(
 				Events::INIT, // Event
 				States::IDLE,  // New state
 				&GateControl::OnTranToIdle,
-				&GateControl::NotGuard)
+				&GateControl::GuardS1OrS2)
 		 };
 //***************************************************************************
 

@@ -70,6 +70,8 @@ int main(void) {
 	PRINTF("Etlcpp FSM\n");
 	gateControl.start(false);
 	gateControl.guard = true;
+	gateControl.S1 = true;
+	gateControl.S2 = false;
 	gateControl.process_event(Events::INIT);
 
 	gateControl.process_event(Events::S1);
